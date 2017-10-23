@@ -19,7 +19,7 @@ from keras.optimizers import Adam, SGD, RMSprop
 
 
 #### GLOBAL VARIABLES #######################################################################
-SESSIONS = 20
+SESSIONS = 200
 #############################################################################################
 
 
@@ -183,8 +183,7 @@ def traindqn(env):
 ######### TEST DQN AGENT ######################################################################
 def testdqn(env, trials):
     agent = deepagent(env)
-    # agent.model.load_weights("./cartpolev1_dqn_weights.h5")
-    # agent.model.load_weights("./weights.h5")
+    agent.model.load_weights("./cartpolev1_dqn_weights.h5")
     for test in range(trials):
         agent.epsilon = 0.000
         cumreward = 0
@@ -218,9 +217,9 @@ def testdqn(env, trials):
 if __name__ == '__main__':
     env = gym.make('CartPole-v1')
 
-    C = traindqn(env)
-    plt.plot(C)
-    plt.show()
+    # C = traindqn(env)
+    # plt.plot(C)
+    # plt.show()
 
-    # testdqn(env, 5)
+    testdqn(env, 5)
 ###############################################################################################
